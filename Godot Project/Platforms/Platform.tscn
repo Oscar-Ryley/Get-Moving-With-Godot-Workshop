@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://p2sxxdar7uky"]
+
+[ext_resource type="Material" uid="uid://cwa4hlggjtrwi" path="res://Textures/Blue-Obstacle.tres" id="1_2r0wy"]
+[ext_resource type="Script" uid="uid://bp0ai1qhddox6" path="res://Platforms/platform.gd" id="2_1tegd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pxiik"]
+material = ExtResource("1_2r0wy")
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b84oo"]
+size = Vector3(1, 0.498657, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6e6dx"]
+size = Vector3(0.986087, 0.0163861, 0.979614)
+
+[node name="Platform" type="Node3D"]
+script = ExtResource("2_1tegd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0104466, -0.000513732)
+mesh = SubResource("BoxMesh_pxiik")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0022583, 0)
+shape = SubResource("BoxShape3D_b84oo")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00157958, 0.260052, 0.0010376)
+shape = SubResource("BoxShape3D_6e6dx")
+
+[connection signal="body_entered" from="MeshInstance3D/Area3D" to="." method="_on_area_3d_body_entered"]

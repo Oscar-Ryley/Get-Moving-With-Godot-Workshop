@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://8sgfcds8wrgf"]
+
+[ext_resource type="Texture2D" uid="uid://cr4kalbslv14g" path="res://Textures/blue_metal_plate_diff_4k.jpg" id="1_bxpg2"]
+[ext_resource type="Texture2D" uid="uid://c4h3p6k3tfa6c" path="res://Textures/blue_metal_plate_disp_4k.png" id="2_d62j1"]
+
+[resource]
+albedo_color = Color(1, 0.129412, 0.12549, 1)
+albedo_texture = ExtResource("1_bxpg2")
+heightmap_enabled = true
+heightmap_texture = ExtResource("2_d62j1")

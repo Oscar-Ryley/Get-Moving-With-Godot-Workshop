@@ -1,0 +1,306 @@
+[gd_scene load_steps=22 format=3 uid="uid://c72h8y67lgq8p"]
+
+[ext_resource type="Texture2D" uid="uid://da5mxuutlk1td" path="res://Textures/freenaturestock-1908.jpg" id="1_hha1q"]
+[ext_resource type="Script" uid="uid://d2i31oa66w3sp" path="res://Scripts/3D-Movement.gd" id="1_nay2g"]
+[ext_resource type="Texture2D" uid="uid://ddqux3yjvxk0j" path="res://Textures/damaged_concrete_floor_03_diff_4k.jpg" id="2_vrthc"]
+[ext_resource type="Texture2D" uid="uid://de8haejmxgbfa" path="res://Textures/damaged_concrete_floor_03_disp_4k.png" id="3_3f0qu"]
+[ext_resource type="PackedScene" uid="uid://octgpx03h21k" path="res://Platforms/Thin-Platform.tscn" id="4_ct5xj"]
+[ext_resource type="PackedScene" uid="uid://p2sxxdar7uky" path="res://Platforms/Platform.tscn" id="5_53qe0"]
+[ext_resource type="Texture2D" uid="uid://p7h6oe8umiy6" path="res://Textures/painted_concrete_diff_4k.jpg" id="6_t6tqd"]
+[ext_resource type="Texture2D" uid="uid://cdrsm4kqrg3u3" path="res://Textures/painted_concrete_disp_4k.png" id="7_hha1q"]
+[ext_resource type="Script" uid="uid://ckqfdnokx5eg6" path="res://Platforms/num_platforms.gd" id="9_ct5xj"]
+[ext_resource type="Script" uid="uid://c6w3pkhf64d7a" path="res://Platforms/count_platforms.gd" id="10_53qe0"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ct5xj"]
+panorama = ExtResource("1_hha1q")
+
+[sub_resource type="Sky" id="Sky_t6tqd"]
+sky_material = SubResource("PanoramaSkyMaterial_ct5xj")
+
+[sub_resource type="Environment" id="Environment_hha1q"]
+background_mode = 2
+sky = SubResource("Sky_t6tqd")
+sky_custom_fov = 15.5
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5o46i"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nay2g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrthc"]
+albedo_texture = ExtResource("2_vrthc")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_3f0qu")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2hhqu"]
+material = SubResource("StandardMaterial3D_vrthc")
+size = Vector2(25, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwcxh"]
+size = Vector3(24.8357, 0.21344, 39.8321)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ct5xj"]
+albedo_texture = ExtResource("6_t6tqd")
+heightmap_enabled = true
+heightmap_scale = 10.0
+heightmap_texture = ExtResource("7_hha1q")
+
+[sub_resource type="BoxMesh" id="BoxMesh_53qe0"]
+material = SubResource("StandardMaterial3D_ct5xj")
+size = Vector3(0.5, 20, 40)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j7mjn"]
+size = Vector3(0.5, 20, 40)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hha1q")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18665, 0)
+script = ExtResource("1_nay2g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_5o46i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_nay2g")
+
+[node name="Node3D" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.631731, -0.240166)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Node3D"]
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83553, 4.93542)
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67106, 6.40729)
+
+[node name="Platform3" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7379, 2.53904, 6.02244)
+
+[node name="Platform4" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83553, -2.33647)
+
+[node name="Platform5" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12729, 3.55531, 4.54236)
+
+[node name="Platform6" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59333, 4.2073, 6.12076)
+
+[node name="Platform7" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.67744, 5.46825, 5.05398)
+
+[node name="Platform8" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16932, 6.775, 3.04681)
+
+[node name="Platform9" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.52584, 7.65999, 4.34116)
+
+[node name="Platform10" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19549, 8.6348, 3.68348)
+
+[node name="Platform11" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.475317, 9.51503, 5.47822)
+
+[node name="Platform12" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2604, 10.5738, 6.52412)
+
+[node name="Thin Platform" parent="Platforms" instance=ExtResource("4_ct5xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.70687, 10.5252, 7.88897)
+
+[node name="Thin Platform2" parent="Platforms" instance=ExtResource("4_ct5xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.57885, 10.5252, 7.88897)
+
+[node name="Thin Platform3" parent="Platforms" instance=ExtResource("4_ct5xj")]
+transform = Transform3D(0.0274157, 0, 0.999624, 0, 1, 0, -0.999624, 0, 0.0274157, 12.2213, 10.5252, 4.95755)
+
+[node name="Platform13" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5103, 10.2241, 1.32614)
+
+[node name="Platform14" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5103, 11.3755, -0.756824)
+
+[node name="Platform15" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.05132, 9.5368, -0.756824)
+
+[node name="Platform16" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.88495, 10.3764, -2.11392)
+
+[node name="Platform17" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5146, 10.3764, -4.11533)
+
+[node name="Thin Platform4" parent="Platforms" instance=ExtResource("4_ct5xj")]
+transform = Transform3D(-0.755682, 0, 0.654939, 0, 1, 0, -0.654939, 0, -0.755682, 5.2595, 10.8783, -4.35253)
+
+[node name="Platform18" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17726, 11.1301, -7.21454)
+
+[node name="Platform19" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.500446, 11.8727, -8.31213)
+
+[node name="Platform20" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.66081, 10.2844, -6.83269)
+
+[node name="Platform21" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.42938, 10.9643, -9.62189)
+
+[node name="Platform22" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.88592, 11.8714, -12.0345)
+
+[node name="Platform23" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08494, 12.878, -12.0345)
+
+[node name="Platform24" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47618, 12.3066, -10.1936)
+
+[node name="Platform25" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08666, 11.1768, -9.54651)
+
+[node name="Thin Platform5" parent="Platforms" instance=ExtResource("4_ct5xj")]
+transform = Transform3D(-0.734405, 0, -0.678711, 0, 1, 0, 0.678711, 0, -0.734405, 6.6832, 9.44398, 1.62533)
+
+[node name="Platform26" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47473, 10.1088, 2.85283)
+
+[node name="Platform27" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.59601, 11.1054, 2.07463)
+
+[node name="Platform28" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.86959, 12.0792, 0.887271)
+
+[node name="Platform29" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52675, 12.8991, 2.33011)
+
+[node name="Platform30" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52675, 13.9783, 4.59951)
+
+[node name="Platform31" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3005, 9.11703, 3.57176)
+
+[node name="Platform32" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3606, 8.76021, 2.2794)
+
+[node name="Platform33" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3606, 9.76773, 6.43688)
+
+[node name="Platform34" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.52112, 10.6134, 10.0856)
+
+[node name="Platform35" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2475, 11.78, 10.0856)
+
+[node name="Platform36" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.309488, 10.9771, 8.78986)
+
+[node name="Platform37" parent="Platforms" instance=ExtResource("5_53qe0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6051, 12.8592, 4.73778)
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 0.811747, 0.584009, 0, -0.584009, 0.811747, -0.00161743, 13.655, 18.3955)
+light_energy = 2.0
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -0.797395, 0.603458, 0, -0.603458, -0.797395, -1.29362, 13.7435, -15.3124)
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(-0.442015, -0.244299, -0.8631, -0.86565, -0.136015, 0.48182, -0.235103, 0.960113, -0.151357, -11.7956, 12.7538, -1.78748)
+
+[node name="DirectionalLight3D4" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(-0.171406, -0.618068, 0.767211, 0.296525, 0.710261, 0.638437, -0.939517, 0.33693, 0.0615295, 10.8278, 13.4447, 0.268038)
+
+[node name="DirectionalLight3D5" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(0.342306, 0.929779, 0.135418, -0.0115824, 0.14829, -0.988876, -0.939517, 0.33693, 0.0615295, -0.101559, -6.30867, 0.268038)
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_2hhqu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0899811, -0.0609436, 0.0740032)
+shape = SubResource("BoxShape3D_qwcxh")
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Wall1" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5276, 9.88267, 0)
+mesh = SubResource("BoxMesh_53qe0")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Wall1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall1/StaticBody3D"]
+shape = SubResource("BoxShape3D_j7mjn")
+
+[node name="Wall2" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7094, 9.88267, 0)
+mesh = SubResource("BoxMesh_53qe0")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Wall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall2/StaticBody3D"]
+shape = SubResource("BoxShape3D_j7mjn")
+
+[node name="Wall3" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-0.000488683, 0, 1, 0, 1, 0, -1, 0, -0.000488683, -0.527637, 9.88267, 20.2187)
+mesh = SubResource("BoxMesh_53qe0")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Wall3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall3/StaticBody3D"]
+shape = SubResource("BoxShape3D_j7mjn")
+
+[node name="Wall4" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-0.000488683, 0, 1, 0, 1, 0, -1, 0, -0.000488683, -0.527637, 9.88267, -20.1053)
+mesh = SubResource("BoxMesh_53qe0")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Wall4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall4/StaticBody3D"]
+shape = SubResource("BoxShape3D_j7mjn")
+
+[node name="Ceiling" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-0.000345537, 0.999973, -0.00731304, 1, 0.00034912, 0.000488683, 0.000491223, -0.00731287, -0.999973, -2.10917, 19.4513, -0.305089)
+mesh = SubResource("BoxMesh_53qe0")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Ceiling"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Ceiling/StaticBody3D"]
+shape = SubResource("BoxShape3D_j7mjn")
+
+[node name="HUD" type="Node2D" parent="."]
+
+[node name="Num_Platforms" type="RichTextLabel" parent="HUD"]
+offset_left = 14.0
+offset_top = 1.0
+offset_right = 54.0
+offset_bottom = 41.0
+theme_override_colors/default_color = Color(1, 0.192157, 0.345098, 1)
+script = ExtResource("9_ct5xj")
+
+[node name="Total_Platforms" type="RichTextLabel" parent="HUD"]
+offset_left = 47.0
+offset_top = 1.0
+offset_right = 87.0
+offset_bottom = 41.0
+theme_override_colors/default_color = Color(0.109804, 0.329412, 1, 1)
+script = ExtResource("10_53qe0")
+
+[node name="Yay!" type="RichTextLabel" parent="HUD"]
+offset_left = 99.0
+offset_top = 1.0
+offset_right = 139.0
+offset_bottom = 41.0
+theme_override_colors/default_color = Color(0.221253, 1, 0.496734, 1)
