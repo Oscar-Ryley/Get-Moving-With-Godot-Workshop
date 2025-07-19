@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca2tpwsrvs7ek"]
+
+[ext_resource type="Script" uid="uid://ckqfdnokx5eg6" path="res://Platforms/num_platforms.gd" id="1_4cvuw"]
+[ext_resource type="Script" uid="uid://c6w3pkhf64d7a" path="res://Platforms/count_platforms.gd" id="2_j2eoc"]
+[ext_resource type="Script" uid="uid://djs5t8ioq3nem" path="res://platforms/yay.gd" id="3_7mckg"]
+[ext_resource type="Texture2D" uid="uid://ce4u3vyu7eog3" path="res://Textures/white.jpg" id="3_j2eoc"]
+
+[node name="Scene" type="Node3D"]
+
+[node name="HUD" type="Node2D" parent="."]
+z_index = 10
+scale = Vector2(2, 2)
+
+[node name="Num_Platforms" type="RichTextLabel" parent="HUD"]
+offset_left = 14.0
+offset_top = 1.0
+offset_right = 54.0
+offset_bottom = 41.0
+theme_override_colors/default_color = Color(1, 0.192157, 0.345098, 1)
+script = ExtResource("1_4cvuw")
+
+[node name="Total_Platforms" type="RichTextLabel" parent="HUD"]
+offset_left = 47.0
+offset_top = 1.0
+offset_right = 87.0
+offset_bottom = 41.0
+theme_override_colors/default_color = Color(0.109804, 0.329412, 1, 1)
+script = ExtResource("2_j2eoc")
+
+[node name="Yay!" type="RichTextLabel" parent="HUD"]
+offset_left = 99.0
+offset_top = 1.0
+offset_right = 139.0
+offset_bottom = 41.0
+theme_override_colors/default_color = Color(0.221253, 1, 0.496734, 1)
+script = ExtResource("3_7mckg")
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD"]
+z_index = -1
+position = Vector2(41.25, 10.25)
+scale = Vector2(0.0739437, 0.0308081)
+texture = ExtResource("3_j2eoc")

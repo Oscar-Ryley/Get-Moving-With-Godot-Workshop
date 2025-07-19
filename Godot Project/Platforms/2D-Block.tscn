@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3qaspwbvyhm3"]
+
+[ext_resource type="Script" uid="uid://cb5707sqagwc1" path="res://Platforms/block.gd" id="1_3sj2h"]
+[ext_resource type="Texture2D" uid="uid://cr4kalbslv14g" path="res://Textures/blue_metal_plate_diff_4k.jpg" id="1_fut2l"]
+[ext_resource type="Texture2D" uid="uid://e6evatind4f7" path="res://Textures/red_metal_plate_diff_4k.png" id="2_nhi01"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3sj2h"]
+size = Vector2(40.6, 40.6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhi01"]
+size = Vector2(40, 4)
+
+[node name="2D-Block" type="Node2D"]
+script = ExtResource("1_3sj2h")
+
+[node name="RedSprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("2_nhi01")
+
+[node name="BlueSprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("1_fut2l")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_3sj2h")
+
+[node name="Area2D" type="Area2D" parent="."]
+priority = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -23)
+shape = SubResource("RectangleShape2D_nhi01")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

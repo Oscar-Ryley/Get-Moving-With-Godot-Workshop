@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=3 uid="uid://d215varfooryp"]
+
+[ext_resource type="Texture2D" uid="uid://dsavnyhdqb5p8" path="res://Textures/2D-Background.svg" id="1_21set"]
+[ext_resource type="PackedScene" uid="uid://h70tvevacohy" path="res://2D-Character.tscn" id="1_timec"]
+[ext_resource type="PackedScene" uid="uid://bce348g30n11j" path="res://Platforms/2D-Block-Wall.tscn" id="2_tesp2"]
+[ext_resource type="PackedScene" uid="uid://b3qaspwbvyhm3" path="res://Platforms/2D-Block.tscn" id="3_ves0b"]
+
+[node name="Node2D" type="Node2D"]
+z_index = 5
+
+[node name="2D-Character" parent="." instance=ExtResource("1_timec")]
+position = Vector2(148, 359)
+
+[node name="2D-Block-Wall" parent="." instance=ExtResource("2_tesp2")]
+position = Vector2(641, 17)
+scale = Vector2(30, 1)
+
+[node name="2D-Block-Wall2" parent="." instance=ExtResource("2_tesp2")]
+position = Vector2(639, 703)
+scale = Vector2(30, 1)
+
+[node name="2D-Block-Wall3" parent="." instance=ExtResource("2_tesp2")]
+position = Vector2(53, 358)
+scale = Vector2(1, 18.5)
+
+[node name="2D-Block-Wall4" parent="." instance=ExtResource("2_tesp2")]
+position = Vector2(1231, 363)
+scale = Vector2(1, 18.5)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(645, 361)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_21set")
+
+[node name="2D-Block" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(101, 662)
+
+[node name="2D-Block2" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(376, 643)
+
+[node name="2D-Block3" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(165, 455)
+
+[node name="2D-Block4" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(304, 389)
+
+[node name="2D-Block5" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(460, 277)
+
+[node name="2D-Block6" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(571, 416)
+
+[node name="2D-Block7" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(226, 192)
+
+[node name="2D-Block8" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(1109, 633)
+
+[node name="2D-Block9" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(1111, 479)
+
+[node name="2D-Block10" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(475, 541)
+
+[node name="2D-Block11" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(843, 587)
+
+[node name="2D-Block12" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(755, 417)
+
+[node name="2D-Block13" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(893, 330)
+
+[node name="2D-Block14" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(705, 210)
+
+[node name="2D-Block15" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(663, 630)
+
+[node name="2D-Block16" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(1099, 286)
+
+[node name="2D-Block17" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(975, 155)
+
+[node name="2D-Block18" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(459, 58)
+rotation = 3.14159
+
+[node name="2D-Block19" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(985, 662)
+
+[node name="2D-Block20" parent="." instance=ExtResource("3_ves0b")]
+position = Vector2(1149, 58)
+rotation = 3.14159
