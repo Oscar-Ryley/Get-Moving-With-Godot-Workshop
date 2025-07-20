@@ -12,6 +12,7 @@ const speed = 7.0
 const jump_velocity = 5.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+
 @onready var neck := $Node3D
 @onready var camera := $Node3D/Camera3D
 
