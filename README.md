@@ -19,7 +19,7 @@ Full video workshop on the Durham University Computing Society YouTube Channel (
 
 4. Add child nodese to this scene so that it has the following structure:
 
-    - Node2D <--# 'Character'
+    - Node2D <-- 'Character'
         - CharacterBody2D
             - CollisionShape2D
             - Sprite2D
